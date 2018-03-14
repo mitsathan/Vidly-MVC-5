@@ -1,0 +1,76 @@
+﻿@*@model Vidly.ViewModels.CustomerViewModel*@
+@model IEnumerable<Vidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+@*mine*@
+@*@if (Model.Customers.Count == 0)
+{
+    <p>No Customers yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Name
+            </td>
+        </tr>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+                <td>
+                    @customer.Id
+                </td>
+                <td>
+                    <a href="../Customers/Details/@customer.Id">@customer.Name</a>
+                    <br />
+                    @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
+                </td>
+            </tr>
+        }
+    </table>
+}*@
+
+@*mosh*@
+@if (!Model.Any())
+{
+    <p>No Customers yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <td>
+                Id
+            </td>
+            <td>
+                Name
+            </td>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>
+                    @customer.Id
+                </td>
+                <td>
+                    <a href="../Customers/Details/@customer.Id">@customer.Name</a>
+                    <br />
+                    @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

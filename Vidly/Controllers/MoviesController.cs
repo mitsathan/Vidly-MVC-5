@@ -13,7 +13,11 @@ namespace Vidly.Controllers
         // GET: Movies/Random
         public ActionResult Random()
         {
-            var movie = new Movie() {Name = "Shrek!"};
+            var movie = new List<Movie>
+            {
+                new Movie {Name = "Shrek!"},
+                new Movie {Name = "Wall=e"}
+            };
             var customers = new List<Customer>
             {
                 new Customer {Name = "customer 1"},
@@ -22,7 +26,7 @@ namespace Vidly.Controllers
 
             var viewModel = new RandomMovieViewModel
             {
-                Movie = movie,
+                Movies = movie,
                 Customers = customers
             };
 
@@ -41,21 +45,63 @@ namespace Vidly.Controllers
         }
 
         //movies
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
+        //public ActionResult Index(int? pageIndex, string sortBy)
+        //{
+        //    if (!pageIndex.HasValue)
+        //        pageIndex = 1;
 
-            if (string.IsNullOrWhiteSpace(sortBy))
-                sortBy = "name";
+        //    if (string.IsNullOrWhiteSpace(sortBy))
+        //        sortBy = "name";
 
-            return Content(string.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
+        //    return Content(string.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        //}
 
         [Route("movies/released/{year}/{month:range(1,12)}")]
         public ActionResult ByReleaseDate(int year,int month)
         {
             return Content(year+"/"+month);
+        }
+
+        ////mine
+        //public ActionResult Index()
+        //{
+        //    var viewmodel = GetMovies(FillList());
+
+        //    return View(viewmodel);
+        //}
+
+        //private MovieViewModel GetMovies(List<Movie> movieList)
+        //{
+        //    return new MovieViewModel
+        //    {
+        //        Movies = movieList
+        //    };
+        //}
+
+        //private List<Movie> FillList()
+        //{
+        //    return new List<Movie>
+        //    {
+        //        new Movie {Name = "Shrek!",Id = 1},
+        //        new Movie {Name = "Wall=e",Id = 2}
+        //    };
+        //}
+
+        //mosh
+        public ActionResult Index()
+        {
+            var viewmodel = GetMovies();
+
+            return View(viewmodel);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie {Name = "Shrek!",Id = 1},
+                new Movie {Name = "Wall=e",Id = 2}
+            };
         }
     }
 }

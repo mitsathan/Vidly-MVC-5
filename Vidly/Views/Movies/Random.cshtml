@@ -5,5 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Movie.Name</h2>
-@Model.Customers
+@{
+    var className = Model.Customers.Count > 5 ? "popular" : null;
+}
+
+
+@foreach (var movies in Model.Movies)
+{
+    <h2 class="@className">@movies.Name</h2>
+
+    if (Model.Customers.Count == 0)
+    {
+        <p>No one has rented this monvie before.</p>
+        <text>No one has rented this monvie before.</text>
+    }
+    else
+    {
+        <ul>
+            @foreach (var customer in Model.Customers)
+            {
+                <li>@customer.Name</li>
+            }
+        </ul>
+    }
+    <br/>
+}
