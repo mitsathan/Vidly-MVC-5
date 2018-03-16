@@ -48,26 +48,20 @@ else
 {
     <table class="table table-bordered table-hover">
         <thead>
-        <tr>
-            <td>
-                Id
-            </td>
-            <td>
-                Name
-            </td>
-        </tr>
+            <tr>
+                <th>Name</th>
+                <th>Membership Type</th>
+            </tr>
         </thead>
         <tbody>
         @foreach (var customer in Model)
         {
             <tr>
                 <td>
-                    @customer.Id
+                    @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
                 </td>
                 <td>
-                    <a href="../Customers/Details/@customer.Id">@customer.Name</a>
-                    <br />
-                    @Html.ActionLink(@customer.Name, "Details", "Customers", new { id = @customer.Id }, null)
+                    @customer.MembershipType.Name
                 </td>
             </tr>
         }
