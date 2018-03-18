@@ -42,6 +42,7 @@
     }*@
 
 @*mosh*@
+@Html.ActionLink("Add New", "New", "Movies", null, new { @class = "btn btn-primary" })
 @if (!Model.Any())
 {
     <p>No Movies yet.</p>
@@ -60,7 +61,7 @@ else
             {
                 <tr>
                     <td>
-                        @Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)
+                        @Html.ActionLink(movie.Name, "Edit", "Movies", new { id = movie.Id }, null)
                     </td>
                     <td>@movie.Genre.Name</td>
                 </tr>
