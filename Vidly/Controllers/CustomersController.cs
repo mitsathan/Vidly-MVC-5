@@ -109,11 +109,17 @@ namespace Vidly.Controllers
         }
 
         //mosh
+        //public ViewResult Index()
+        //{
+        //    var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
+
+        //    return View(customers);
+        //}
+
+        //dataTables implementation
         public ViewResult Index()
         {
-            var customers = _context.Customers.Include(c=>c.MembershipType).ToList();
-
-            return View(customers);
+            return View();
         }
 
         public ActionResult Details(int id)

@@ -1,4 +1,4 @@
-﻿    <div class="navbar navbar-expand-lg navbar-light bg-light">
+﻿<div class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <div class="navbar-brand">
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
@@ -8,10 +8,11 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="navbar-nav">
-                <li class="nav-item">@Html.ActionLink("Customers", "Index", "Customers",null, new { @class = "nav-link" })</li>
+                <li class="nav-item">@Html.ActionLink("Customers", "Index", "Customers", null, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Movies", "Index", "Movies", null, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
+            </ul>
+            @Html.Partial("_LoginPartial")
         </div>
     </div>
+</div>
 
